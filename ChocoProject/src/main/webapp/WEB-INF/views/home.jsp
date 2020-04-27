@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div id="topMenu">
-		<button class="tablink" onclick=""id="defaultOpen">홈</button>
+		<button class="tablink" onclick="javascript:location.href='home.do'"id="defaultOpen">홈</button>
 		<button class="tablink" onclick="">문의게시판</button>
 		<button type="button" class="tablink" onclick="javascript:location.href='boardNotice.do'">공지사항</button>
 		<button type="button" class="tablink" onclick="document.getElementById('id01').style.display='block'">로그인</button>

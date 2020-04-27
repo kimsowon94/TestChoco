@@ -5,85 +5,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {box-sizing: border-box}
-.mySlides1, .mySlides2 {display: none}
-img {vertical-align: middle;}
+<!-- MainHome css 적용 -->
+<link rel="stylesheet" type="text/css" href="./resources/css/MainHome.css">
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
+<!-- js import -->
+<script src="./resources/js/main.js" charset="UTF-8"></script>
 
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a grey background color */
-.prev:hover, .next:hover {
-  background-color: #f1f1f1;
-  color: black;
-}
-</style>
-<script>
-var slideIndex = [1,1];
-var slideId = ["mySlides1", "mySlides2"]
-showSlides(1, 0);
-showSlides(1, 1);
-
-function plusSlides(n, no) {
-  showSlides(slideIndex[no] += n, no);
-}
-
-function showSlides(n, no) {
-  var i;
-  var x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}    
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  x[slideIndex[no]-1].style.display = "block";  
-}
-</script>
-<title>Insert title here</title>
 </head>
 <body>
-<div class="slideshow-container">
-  <div class="mySlides2">
-    <img src="img_band_chicago.jpg" style="width:100%">
+<jsp:include page="home.jsp"/>  
+<h2 style="text-align:center">Gallery</h2>
+
+<div class="container" style="text-align: center;">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="../resources/img/1.png" style="width:30%" >
   </div>
 
-  <div class="mySlides2">
-    <img src="img_band_la.jpg" style="width:100%">
+  <div class="mySlides">
+    <div class="numbertext" >2 / 6</div>
+    <img src="../resources/img/7.jpg" style="width:30%">
   </div>
 
-  <div class="mySlides2">
-    <img src="img_band_ny.jpg" style="width:100%">
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="../resources/img/8.jpg" style="width:30%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="../resources/img/9.jpg" style="width:30%">
   </div>
 
-  <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="../resources/img/5.jpg" style="width:30%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="../resources/img/6.jpg" style="width:30%">
+  </div>
+    
+<!--   <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a> -->
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row" style="height: 175px;">
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/1.png" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/7.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/8.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/9.jpg" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/5.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="../resources/img/6.jpg" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
 </div>
 </body>
 </html>
