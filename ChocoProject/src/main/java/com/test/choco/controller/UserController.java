@@ -15,7 +15,12 @@ public class UserController {
 	@RequestMapping(value="/boardNotice.do", method = RequestMethod.GET)
 	public String boardNotice()
 	{
-		return "noticeBoard";
-		
+		return "noticeBoard";		
+	}
+	
+	@RequestMapping(value="/signupForm.do", method = RequestMethod.GET)
+	public String sigupForm()
+	{
+		return "signup";
 	}
 }

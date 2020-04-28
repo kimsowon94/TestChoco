@@ -38,7 +38,7 @@
 
 			<div class="container" style="background-color: #f1f1f1">
 				<button type="button"onclick="document.getElementById('id01').style.display='none'"	class="cancelbtn">취소</button>
-				<span class="psw"><a href="#">회원가입</a></span>
+				<span class="psw"><a href="javascript:location.href='signupForm.do'">회원가입</a></span>
 			</div>
 		</form>
 	</div>
