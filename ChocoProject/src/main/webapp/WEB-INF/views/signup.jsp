@@ -14,7 +14,8 @@
 <script	src="./resources/compnent/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script	src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script>
 
-
+<script src="./resources/js/main.js" charset="UTF-8"></script>
+<script src="./resources/js/mainFuc.js" charset="UTF-8"></script>
 <!-- 주소찾기 api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
@@ -30,8 +31,9 @@
 			<hr>
 			<div class="in-line">
 				<label for="userId"><b>아이디</b></label><br> 
-				<input type="text"placeholder="아이디를 입력해주세요." name="userId" required style="width: 75%;"> 
-				<input type="button" class="btn" value="중복확인">
+				<input type="text"placeholder="아이디를 입력해주세요." name="userId" id="userId" required> 
+				<!-- <input type="button" class="btn" value="중복확인"> -->
+				<div class="check_font" id="id_check"></div>
 			</div>
 			
 			<label for="userPw"><b>비밀번호</b></label><br> 

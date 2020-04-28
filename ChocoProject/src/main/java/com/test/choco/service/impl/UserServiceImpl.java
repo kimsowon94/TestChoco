@@ -16,5 +16,9 @@ public class UserServiceImpl implements UserService {
 	public int registerUser(UserVO vo) throws Exception {
 		return userDao.registerUser(vo);
 	}
+	@Override
+	public int idCheck(String userId) throws Exception {
+		return userDao.idCheck(userId);
+	}
 
 }

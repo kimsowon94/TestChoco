@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.choco.HomeController;
@@ -34,6 +35,8 @@ public class UserController {
 		return "signup";
 	}
 	
+	
+	// 회원 insert
 	@RequestMapping(value="registerUser.do", method = RequestMethod.POST)
 	@ResponseBody
 	public HashMap<String, String> registerUser(UserVO vo) throws Exception
@@ -52,6 +55,14 @@ public class UserController {
 			result.put("result", "fail");
 		}
 		return result;
-		
+	}
+	
+	
+	/* userId 중복값 확인 */
+	@RequestMapping(value="userIdCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(@RequestParam("userId") String userId) throws Exception
+	{
+		return userService.idCheck(userId);
 	}
 }

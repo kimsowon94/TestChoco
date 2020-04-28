@@ -13,6 +13,7 @@
 		<result column="MODIFIED_TIME" property="modifiedTime"/>		
 	</resultMap>
 	
+	<!-- 회원 insert -->
 	<insert id="registerUser" parameterType="com.test.choco.vo.UserVO">
 		<selectKey keyProperty="userNum" resultType="String" order="BEFORE">
 			SELECT MAX(NVL(USER_NUM,0))+1 FROM USER_INFO 
@@ -41,4 +42,11 @@
 				   ,null
 				)
 	</insert>
+	
+	<!-- userId 중복값 확인 -->
+	<select id="idCheck" resultType="INTEGER">
+		SELECT COUNT(*)
+		FROM USER_INFO 
+		WHERE USER_ID = #{userId}
+	</select>
 </mapper>

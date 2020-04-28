@@ -6,5 +6,8 @@ public interface UserDAO {
 	
 	// 회원 insert
 	public int registerUser(UserVO vo) throws Exception;
+	
+	// userId 중복값 확인
+	public int idCheck(String userId) throws Exception;
 
 }

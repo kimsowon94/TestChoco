@@ -11,9 +11,12 @@
 <script src="./resources/js/main.js" charset="UTF-8"></script>
 <!-- main css 적용 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script -->>
+<!-- <script src="./resources/compnent/jquery-3.3.1.min.js?"></script> -->
+<!-- <script	src="./resources/compnent/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script> -->
+<!-- <script	src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script> -->
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 	<div id="topMenu">
