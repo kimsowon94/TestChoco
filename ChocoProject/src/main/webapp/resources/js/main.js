@@ -36,4 +36,39 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
+//////////////////////////////////////////////////////////////////////////////////
 
+// 회원 insert
+function registerFn() {
+	/*var form = $(".registerForm")[0];
+	var formData = new FormData(form);*/
+	/*alert(1);
+	var $frm = $()*/
+	var formData = $("#registerForm").serialize();
+	
+	$.ajax({
+		url : "/registerUser.do",
+		dataType : "JSON",
+		type : "POST",
+        data: formData,
+		success : function(data, textStatus, jqXHR) 
+		{
+			alert("회원가입완료");
+			location.href="/home.do";
+		},
+		error : function(request,status,error) 
+		{
+			alert("알수없는 오류");
+		}
+			
+	})
+}
+/*우편번호 찾기 (주소 찾기)*/
+function openDaumZipAddress() {
+	new daum.Postcode({oncomplete : function(data) {
+			$("#userAddr1").val(data.zonecode);
+			$("#userAddr2").val(data.address);
+			/*console.log(data);*/
+		}
+	}).open();
+}

@@ -6,7 +6,7 @@ $(document).ready(function() {
 		 serverSide: false,
 		 stateSave: true,
 		/* "dom": '<"col-sm-6"i><"col-sm-2"p>t<"col-sm-6"f><"col-sm-6"l>'*/
-		  "language": {
+		/*  "language": {
 		        "emptyTable": "게시글이 없습니다.",
 		        "lengthMenu": "페이지당 _MENU_ 개씩 보기",
 		        "info": "현재 _START_ - _END_ / _TOTAL_건",
@@ -20,6 +20,6 @@ $(document).ready(function() {
 		            "next": "다음",
 		            "previous": "이전"
 		        }
-		    },
+		    },*/
     });
 } );

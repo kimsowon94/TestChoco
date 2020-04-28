@@ -1,15 +1,25 @@
 package com.test.choco.controller;
 
+import java.util.HashMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.choco.HomeController;
+import com.test.choco.service.UserService;
+import com.test.choco.vo.UserVO;
 
 @Controller
 public class UserController {
+	
+	@Autowired
+	UserService userService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping(value="/boardNotice.do", method = RequestMethod.GET)
@@ -22,5 +32,26 @@ public class UserController {
 	public String sigupForm()
 	{
 		return "signup";
+	}
+	
+	@RequestMapping(value="registerUser.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> registerUser(UserVO vo) throws Exception
+	{
+		HashMap<String, String> result = new  HashMap<String, String>();
+		int count = userService.registerUser(vo);
+		
+		if(count > 0)
+		{
+			System.out.println("회원가입 완료");
+			result.put("result", "success");
+		}
+		else
+		{
+			System.out.println("회원가입 실패");
+			result.put("result", "fail");
+		}
+		return result;
+		
 	}
 }

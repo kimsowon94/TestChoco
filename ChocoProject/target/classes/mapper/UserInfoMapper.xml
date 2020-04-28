@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserDAO">
+	<resultMap type="com.test.choco.vo.UserVO" id="UserVO">
+		<result column="USER_NUM" property="userNum"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="USER_PW" property="userPw"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="USER_PHONE" property="userPhone"/>
+		<result column="USER_ADDR1" property="userAddr1"/>
+		<result column="USER_ADDR2" property="userAddr2"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFIED_TIME" property="modifiedTime"/>		
+	</resultMap>
+	
+	<insert id="registerUser" parameterType="com.test.choco.vo.UserVO">
+		<selectKey keyProperty="userNum" resultType="String" order="BEFORE">
+			SELECT MAX(NVL(USER_NUM,0))+1 FROM USER_INFO 
+		</selectKey>
+			INSERT INTO USER_INFO 
+				(
+					USER_NUM
+				   ,USER_ID
+				   ,USER_PW
+				   ,USER_NAME
+				   ,USER_PHONE
+				   ,USER_ADDR1
+				   ,USER_ADDR2
+				   ,CREATE_TIME
+				   ,MODIFIED_TIME
+				) VALUES 
+				(
+				    #{userNum}
+				   ,#{userId}
+				   ,#{userPw}
+				   ,#{userName}
+				   ,#{userPhone}
+				   ,#{userAddr1}
+				   ,#{userAddr2}
+				   ,sysdate
+				   ,null
+				)
+	</insert>
+</mapper>

@@ -15,33 +15,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" type="text/css"/>
 
 <title>공지사항</title>
-<style>
-
-.collapse-item p{
-	color: gray;
-	font-weight: bold;
-} 
-.rewardBtn {
-	width: auto;
-	height: auto;
-	background-color: #F39C12;
-	border: #F39C12;
-	font-size: 15px;
-}
-
-.rewardBtn:hover {
-	background-color: #8E44AD;
-	cursor: pointer;
-}
-.sorting{
-	width: auto;
-}
-tbody tr:hover{
-	background: #f8f9fc;
-}
-
-</style>
-
 </head>
 <body>
 <jsp:include page="home.jsp"/>  
