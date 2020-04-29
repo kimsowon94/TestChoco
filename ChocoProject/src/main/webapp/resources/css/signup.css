@@ -1,13 +1,16 @@
 @charset "UTF-8";
-
+#userAddr1{
+	background-color: #DDE7E7;
+}
 .btn {
 	color: white;
 	cursor: pointer;
-	padding: 12px;
+	padding: 10px;
 	margin: 5px 0 22px 0;
 	display: inline-block;
 	border: none;
 	background-color:silver;
+	width: 91px;
 }
 
 body {
@@ -20,7 +23,7 @@ body {
 }
 
 /* Add padding to containers */
-.container {
+.signup-container {
 	padding: 16px;
 	width: 30%;
 	margin: 0 auto;

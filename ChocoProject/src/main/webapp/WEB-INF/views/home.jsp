@@ -11,15 +11,15 @@
 <script src="./resources/js/main.js" charset="UTF-8"></script>
 <!-- main css 적용 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
+<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script -->>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script -->
 <!-- <script src="./resources/compnent/jquery-3.3.1.min.js?"></script> -->
 <!-- <script	src="./resources/compnent/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script> -->
 <!-- <script	src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script> -->
-
 </head>
 <body>
-	<div id="topMenu">
+	<div id="topMenu">   
 		<button class="tablink" onclick="javascript:location.href='home.do'"id="defaultOpen">홈</button>
 		<button class="tablink" onclick="">문의게시판</button>
 		<button type="button" class="tablink" onclick="javascript:location.href='boardNotice.do'">공지사항</button>
@@ -29,7 +29,7 @@
 
 <!-- 로그인 모달  -->
 	<div id="id01" class="modal">
-		<form class="modal-content animate" action="/action_page.php" method="post">
+		<form class="modal-content animate">
 			<div class="imgcontainer">
 				<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span> 
 				<img src="../resources/img/login.jpg" alt="Avatar" class="avatar" style="width: 20%;">
@@ -37,10 +37,11 @@
 
 			<div class="container">
 				<label for="uname"><b>아이디</b></label> 
-				<input type="text" placeholder="아이디를 입력해주세요." name="userId" required> 
+				<input type="text" placeholder="아이디를 입력해주세요." name="userId" id="userId" required> 
 				<label for="psw"><b>비밀번호</b></label> 
-				<input type="password"	placeholder="비밀번호를 입력해주세요." name="userPw" required>
-				<button type="submit">로그인</button>
+				<input type="password"	placeholder="비밀번호를 입력해주세요." name="userPw" id="userPw" required>
+				<div id="login_check"></div>
+				<button type="button" onclick="fnLogin()">로그인</button>
 			</div>
 
 			<div class="container" style="background-color: #f1f1f1">
