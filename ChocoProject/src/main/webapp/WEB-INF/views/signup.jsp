@@ -30,16 +30,16 @@
 			<h1>회원가입</h1>
 			<hr>
 			<div class="in-line">
-				<label for="userId"><b>아이디</b></label><br> 
+				<label><b>아이디</b></label><br> 
 				<input type="text"placeholder="아이디를 입력해주세요." name="userId" id="userId" required maxlength="12"> 
 				<!-- <input type="button" class="btn" value="중복확인"> -->
 				<div class="check_font" id="id_check"></div>
 			</div>
 			
-			<label for="userPw"><b>비밀번호</b></label><br> 
+			<label><b>비밀번호</b></label><br> 
 			<input	type="password" placeholder="비밀번호를 입력해주세요." name="userPw" required id="userPw" maxlength="15"><br>
 
-			<label for="userPw2"><b>비밀번호 재확인</b></label><br> 
+			<label><b>비밀번호 재확인</b></label><br> 
 			<input type="password" placeholder="비밀번호를 다시한번 입력해주세요." name="userPw2"required id="userPw2" maxlength="15"><br>
 			<div class="check_font" id="pw_check"></div>
 			 

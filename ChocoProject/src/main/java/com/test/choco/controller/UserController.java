@@ -2,10 +2,13 @@ package com.test.choco.controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,5 +67,39 @@ public class UserController {
 	public int idCheck(@RequestParam("userId") String userId) throws Exception
 	{
 		return userService.idCheck(userId);
+	}
+	
+	/* 마이페이지 이동 */
+	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
+	public String myPage()
+	{
+		return "myPage";
+	}
+	
+	/* 로그인 */
+	@RequestMapping(value="userLogin.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> userLogin(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw
+			, HttpSession session, UserVO vo, Model model) throws Exception
+	{
+		HashMap<String, String> result = new  HashMap<String, String>();
+		String userName = userService.userLogin(vo);
+		System.out.println("userName ======= : " + userName);
+		
+		
+		if(userName == ""  || userName == null)
+		{
+			System.out.println("로그인 실패");
+			 result.put("result", "fail"); 
+		}
+		else
+		{
+			System.out.println("로그인 성공");
+			session.setAttribute("userId", userId);
+			model.addAttribute("userName", userName);
+			result.put("result",userName); 
+		}
+		
+		return result;
 	}
 }

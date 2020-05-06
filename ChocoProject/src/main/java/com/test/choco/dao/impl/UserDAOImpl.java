@@ -22,6 +22,11 @@ public class UserDAOImpl implements UserDAO {
 	public int idCheck(String userId) throws Exception {
 		return sqlsession.selectOne("UserDAO.idCheck", userId);
 	}
+
+	@Override
+	public String userLogin(UserVO vo) throws Exception {
+		return sqlsession.selectOne("UserDAO.userLogin", vo);
+	}
 	
 
 }

@@ -16,7 +16,7 @@
 	<!-- 회원 insert -->
 	<insert id="registerUser" parameterType="com.test.choco.vo.UserVO">
 		<selectKey keyProperty="userNum" resultType="String" order="BEFORE">
-			SELECT MAX(NVL(USER_NUM,0))+1 FROM USER_INFO 
+			SELECT  NVL(MAX(USER_NUM),0)+1 AS "USER_NUM" FROM USER_INFO
 		</selectKey>
 			INSERT INTO USER_INFO 
 				(
@@ -48,5 +48,13 @@
 		SELECT COUNT(*)
 		FROM USER_INFO 
 		WHERE USER_ID = #{userId}
+	</select>
+	
+	<!-- 로그인 -->
+	<select id="userLogin" resultType="String">
+	SELECT USER_NAME
+	FROM USER_INFO
+	WHERE USER_ID = #{userId} 
+	AND   USER_PW = #{userPw}
 	</select>
 </mapper>

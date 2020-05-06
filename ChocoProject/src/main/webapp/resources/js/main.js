@@ -106,28 +106,27 @@ function openDaumZipAddress() {
 
 	// 닉네임 빈값 확인
 	if (userName == "") {
-		$('#name_check').text('닉네임을 설정해주세요.');
-		$('#name_check').css('color', 'red');
+		alert('닉네임을 설정해주세요.');
+//		$('#name_check').css('color', 'red');
 		$("#userName").focus();
 		return false;
 	}
-	else
-	{
-		$('#name_check').text('');
-	}
+//	else
+//	{
+//		$('#name_check').text('');
+//	}
 	
 	// 휴대폰번호 빈값 확인
 	if (userPhone == "") {
-		$('#phone_check').text('휴대폰번호를 입력해주세요.');
-		$('#phone_check').css('color', 'red');
+		alert('휴대폰번호를 입력해주세요.');
+//		$('#phone_check').css('color', 'red');
 		$("#userPhone").focus();
 		return false;
 	}
 	
 	// 주소 빈값 확인
 	if (userAddr1 == "" || userAddr2 == "") {
-		$('#addr_check').text('주소찾기를 해주세요.');
-		$('#addr_check').css('color', 'red');
+		alert('주소를 입력해주세요.');
 		$("#userAddr1").focus();
 		return false;
 	}
@@ -171,12 +170,38 @@ function openDaumZipAddress() {
 // 로그인
 function fnLogin() {
 	
-	var userId =  jQuery("#userId").val();
-	var userPw =  jQuery("#userPw").val();
+	var userId = jQuery(".userId").val();
+	var userPw = jQuery(".userPw").val();
 	if( userId == "" || userPw == "")
 	{	
 //		jQuery('#login_check').text('아이디 또는 비밀번호를 입력해주세요.');
 //		jQuery('#login_check').css('color', 'red');
 		alert("아이디 또는 비밀번호를 입력해주세요.");
+	}
+	else
+	{
+		$.ajax({
+			url : "/userLogin.do",
+			dataType : "JSON",
+			type : "POST",
+			data : {
+				"userId" : userId,
+				"userPw" : userPw
+			}, 
+			success : function(data, textStatus, jqXHR) 
+			{
+				if(data.result == "fail"){
+					alert("아이디 또는 비밀번호가 틀렸습니다.");
+				}
+				else  {
+					alert(data.result + "님 환영합니다.");
+					location.href = '/home.do';
+				}
+			},
+			error : function() 
+			{
+				alert("오류");
+			}			
+		})
 	}
 }
