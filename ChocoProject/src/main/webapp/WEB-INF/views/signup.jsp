@@ -59,12 +59,12 @@
 
 			<button type="button" id="registerbtn" class="registerbtn" onclick="registerFn()">회원가입</button>
 		</div>
-
+		<!-- 
 		<div class="container signin">
 			<p>
 				이미 계정이 있으신가요? <a href="">로그인</a>
 			</p>
-		</div>
+		</div> -->
 	</form>
 </body>
 </html>

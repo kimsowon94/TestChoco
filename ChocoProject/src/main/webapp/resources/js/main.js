@@ -205,3 +205,51 @@ function fnLogin() {
 		})
 	}
 }
+function fnUserUpdate() {
+	var formData = $("#registerUpdate").serialize();
+	/*var userId = $(".userId").val();*/
+	var check = crossCheck();
+	
+	if(check ==true)
+	{	
+		$.ajax({
+			url : "/userInfoUpdate.do",
+			dataType : "JSON",
+			type : "POST",
+	        data: formData,
+			success : function(data, textStatus, jqXHR) 
+			{
+				
+				alert("회원정보 수정이 완료되었습니다.");
+				location.href="/myPage.do";
+			},
+			error : function(request,status,error) 
+			{
+				alert("오류");
+			}				
+		})
+		
+	}
+}
+
+/*function fnmyPage() {
+	var sessionId = $("#sessionId").val();
+//	alert(sessionId);
+	$.ajax({
+		url : "/myPage.do",
+		dataType : "json",
+		type : "POST",
+		data : {
+			"userId" : sessionId,
+		}, 
+		success : function(data, textStatus, jqXHR) 
+		{
+			alert("성공");
+		},
+		error : function() 
+		{
+			alert("오류");
+		}			
+	})
+	
+}*/

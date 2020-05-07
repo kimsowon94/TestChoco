@@ -1,6 +1,7 @@
 package com.test.choco.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,10 +72,23 @@ public class UserController {
 	
 	/* 마이페이지 이동 */
 	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
-	public String myPage()
+	public String myPage(Model model,@RequestParam("userId") String userId ) throws Exception
 	{
+		List<UserVO> userInfo = userService.userInfoList(userId);
+		
+		model.addAttribute("userInfo", userInfo);
 		return "myPage";
 	}
+	/* 회원정보 수정란에 데이터뿌리기 */
+//	@RequestMapping(value="myPage.do", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String userInfoList(@RequestParam("userId") String userId, Model model) throws Exception
+//	{
+//		List<UserVO> userInfo = userService.userInfoList(userId);
+//		
+//		model.addAttribute("userInfo", userInfo);
+//		return "myPage";
+//	}
 	
 	/* 로그인 */
 	@RequestMapping(value="userLogin.do", method = RequestMethod.POST)
@@ -102,4 +116,42 @@ public class UserController {
 		
 		return result;
 	}
+	
+	/* 회원정보 update */
+	@RequestMapping(value="/userInfoUpdate.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> userInfoUpdate(UserVO vo) throws Exception
+	{
+		HashMap<String, String> result = new HashMap<String, String>();
+		int count = userService.userInfoUpdate(vo);
+		
+		if(count > 0)
+		{
+			System.out.println("회원정보 수정 완료");
+			result.put("result", "success");
+		}
+		else
+		{
+			System.out.println("회원정보 수정 실패");
+			result.put("result", "fail");
+		}
+		return result;		
+	}
+	
+	/* 로그아웃 */
+	@RequestMapping(value="/logout.do", method = RequestMethod.GET)
+	public String logout(HttpSession session)
+	{
+		String id=(String) session.getAttribute("userId");
+		
+		session.removeAttribute(id);
+		
+		session.invalidate();
+		
+		System.out.println("session에 아이디값 남아있니? :" +id);
+		
+		
+		return "redirect:home.do";
+	}
+
 }

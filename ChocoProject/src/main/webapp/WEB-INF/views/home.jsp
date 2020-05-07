@@ -24,7 +24,9 @@
 		<button type="button" class="tablink" onclick="document.getElementById('id01').style.display='block'">로그인</button>
 		</c:if>
 		<c:if test="${!empty userId }">
-		<button type="button" class="tablink" onclick="javascript:location.href='myPage.do'">마이페이지</button>
+		<button type="button" class="tablink" onclick="javascript:location.href='myPage.do?userId=${userId}'">마이페이지</button>
+		<!-- <button type="button" class="tablink" onclick="fnmyPage()">마이페이지</button> -->
+		<input type="hidden" value="${userId }" id="sessionId" name="sessionId">
 		</c:if>
 	</div>
 

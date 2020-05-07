@@ -3,24 +3,12 @@
 
 //userId 중복 체크
 $(document).ready(function() {
-	
-//	제이쿼리 실행 여부 확인
-	/*
-	if (typeof jQuery == 'undefined') {
-
-		alert("없음");
-
-	} else {
-
-		alert("있음");
-
-	}
-	 */
-	
 	/*전체 공백*/
 	var engNum = /^[A-Za-z0-9+]*$/;
 	
 //	$("#registerbtn").attr("disabled", true);
+	
+	
 	$("#userId").blur(function() {	
 		var userId = $("#userId").val();		
 		$.ajax({

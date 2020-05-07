@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 <style>
 body {
-  margin: 0;
+  /* margin: 0; */
   font-family: "Lato", sans-serif;
 }
 
 .sidebar {
-  margin: 0;
+   float: left;
+  /* margin: 0; */
   padding: 0;
   width: 200px;
   background-color: #f1f1f1;
@@ -64,15 +65,14 @@ div.content {
 </head>
 <body>
 <div class="sidebar">
-  <a class="active" href="#home">내 정보수정</a>
-  <a href="#news">로그아웃</a>
+  <a class="active">내 정보수정</a>
+  <a onclick="if(confirm('로그아웃하시겠습니까?')){location.href='logout.do'}">로그아웃</a>
   <!-- <a href="#contact">Contact</a>
   <a href="#about">About</a> -->
 </div>
+<!-- <div class="content">
 
-<div class="content">
-
-</div>
+</div> -->
 
 </body>
 </html>

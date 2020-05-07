@@ -1,5 +1,7 @@
 package com.test.choco.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String userLogin(UserVO vo) throws Exception {
 		return userDao.userLogin(vo);
+	}
+	@Override
+	public List<UserVO> userInfoList(String userId) throws Exception {
+		return userDao.userInfoList(userId);
+	}
+	@Override
+	public int userInfoUpdate(UserVO vo) throws Exception {
+		return userDao.userInfoUpdate(vo);
 	}
 
 }
