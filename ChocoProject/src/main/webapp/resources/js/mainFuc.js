@@ -75,8 +75,5 @@ $(document).ready(function() {
 			$('#pw_check').css('color', 'blue');
 		}
 	});	
-	 
-	 
-
 });
 
