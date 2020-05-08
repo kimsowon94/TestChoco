@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+	<resultMap type="com.test.choco.vo.AdminVO" id="AdminVO">
+		<result column="ADMIN_NUM" property="adminNum"/>
+		<result column="ADMIN_ID" property="adminId"/>
+		<result column="ADMIN_PW" property="adminPw"/>
+		<result column="CREATE_TIME" property="createTime"/>				
+	</resultMap>
+	
+	<select id="adminLogin" resultType="INTEGER">
+		SELECT COUNT(*)
+		FROM ADMIN_INFO
+		WHERE ADMIN_ID = #{adminId}
+     		AND ADMIN_PW = #{adminPw}
+	</select>
+</mapper>

@@ -22,7 +22,7 @@
 </head>
 <body>
 <jsp:include page="home.jsp"/>  
-<jsp:include page="sideBar.jsp"/> 
+<jsp:include page="userSideBar.jsp"/> 
 	<form class="registerUpdate" id="registerUpdate">
 	<c:forEach items="${userInfo }" var="a">
 		<div class="signup-container">

@@ -19,13 +19,16 @@
 		<button class="tablink" onclick="javascript:location.href='home.do'"id="defaultOpen">홈</button>
 		<button class="tablink" onclick="">문의게시판</button>
 		<button type="button" class="tablink" onclick="javascript:location.href='boardNotice.do'">공지사항</button>
-		<c:if test="${empty userId }">
+		<c:if test="${sessionScope.userId == null && sessionScope.adminId == null}">
 		<button type="button" class="tablink" onclick="document.getElementById('id01').style.display='block'">로그인</button>
 		</c:if>
-		<c:if test="${!empty userId }">
+		<c:if test="${sessionScope.userId != null }">
 		<button type="button" class="tablink" onclick="javascript:location.href='myPage.do?userId=${userId}'">마이페이지</button>
 		<!-- <button type="button" class="tablink" onclick="fnmyPage()">마이페이지</button> -->
 		<input type="hidden" value="${userId }" id="sessionId" name="sessionId">
+		</c:if>
+		<c:if test="${sessionScope.adminId != null}">
+		<button type="button" class="tablink" onclick="">회원관리</button>
 		</c:if>
 	</div>
 

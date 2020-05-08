@@ -178,6 +178,32 @@ function fnLogin() {
 //		jQuery('#login_check').css('color', 'red');
 		alert("아이디 또는 비밀번호를 입력해주세요.");
 	}
+	else if(userId == "admin")
+	{
+		$.ajax({
+			url : "/adminLogin.do",
+			dataType : "JSON",
+			type : "POST",
+			data : {
+				"adminId" : userId,
+				"adminPw" : userPw
+			}, 
+			success : function(data, textStatus, jqXHR) 
+			{
+				if(data.result == "fail"){
+					alert("아이디 또는 비밀번호가 틀렸습니다.");
+				}
+				else  {
+					alert("관리자님 환영합니다.");
+					location.href = '/home.do';
+				}
+			},
+			error : function() 
+			{
+				alert("오류");
+			}			
+		})
+	}
 	else
 	{
 		$.ajax({
