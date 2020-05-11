@@ -8,10 +8,27 @@
 		<result column="CREATE_TIME" property="createTime"/>				
 	</resultMap>
 	
+	<resultMap type="com.test.choco.vo.BoardVO" id="BoardVO">
+		<result column="BOARD_NUM" property="boardNum"/>
+		<result column="BOARD_TITLE" property="boardTitle"/>
+		<result column="BOARD_CONTENT" property="boardContent"/>
+		<result column="BOARD_DATE" property="boardDate"/>
+		<!-- <result column="ADMIN_ID" property="adminId"/> -->
+		<result column="BOARD_MODIFIED" property="boardModified"/>
+	</resultMap>
+	
 	<select id="adminLogin" resultType="INTEGER">
 		SELECT COUNT(*)
 		FROM ADMIN_INFO
 		WHERE ADMIN_ID = #{adminId}
      		AND ADMIN_PW = #{adminPw}
 	</select>
+	
+	<insert id="noticeInsert">
+	<selectKey keyProperty="boardNum" resultType="String" order="BEFORE">
+		SELECT NVL(MAX(BOARD_NUM),0)+1 AS "BOARD_NUM" FROM BOARD
+	</selectKey>
+	INSERT INTO BOARD(BOARD_NUM,BOARD_TITLE,BOARD_CONTENT,BOARD_DATE,ADMIN_ID)
+	VALUES(#{boardNum},#{boardTitle},#{boardContent},SYSDATE,'admin')
+	</insert>
 </mapper>

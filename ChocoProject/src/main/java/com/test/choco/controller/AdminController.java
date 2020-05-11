@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.test.choco.HomeController;
 import com.test.choco.service.AdminService;
 import com.test.choco.vo.AdminVO;
+import com.test.choco.vo.BoardVO;
 
 @Controller
 public class AdminController {
@@ -50,9 +52,32 @@ public class AdminController {
 	}
 	
 	/* 공지사항에서 -> 공지사항 입력폼 */
-	@RequestMapping(value="insertNotice.do", method = RequestMethod.GET)
-	public String insertNotice()
+//	@RequestMapping(value="noticeList.do", method = RequestMethod.GET)
+//	public String noticeList()
+//	{
+//		return "noticeBoard";	
+//	}
+	
+	/* 공지사항 insert */
+	@RequestMapping(value="/noticeInsert.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> noticeInsert(Model model, BoardVO bo) throws Exception
 	{
-		return "insertBoard";	
+		HashMap<String, String> result = new  HashMap<String, String>();
+		int count = service.noticeInsert(bo);
+		
+		if(count==1)
+		{
+			System.out.println("공지사항 insert완료");
+			result.put("result","success");
+		}
+		else
+		{
+			System.out.println("공지사항 insert실패");
+			result.put("result","fail");
+		}
+		
+		return result;
+		
 	}
 }

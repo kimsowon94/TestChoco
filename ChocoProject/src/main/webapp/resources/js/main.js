@@ -258,6 +258,29 @@ function fnUserUpdate() {
 	}
 }
 
+//공지사항 insert
+function fnNoticeInsert() {
+	var formData = $(".noticeAnimate").serialize();
+	
+	$.ajax({
+		url : "/noticeInsert.do",
+		dataType : "JSON",
+		type : "POST",
+        data: formData,
+		success : function(data, textStatus, jqXHR) 
+		{
+			alert("공지사항이 등록되었습니다.");
+			location.href="/boardNotice.do";
+		},
+		error : function(request,status,error) 
+		{
+			alert("오류");
+		}				
+	})
+	
+
+}
+
 /*function fnmyPage() {
 	var sessionId = $("#sessionId").val();
 //	alert(sessionId);

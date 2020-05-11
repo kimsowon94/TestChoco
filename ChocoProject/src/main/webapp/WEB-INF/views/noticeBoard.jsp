@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width-device-width, initial-scale=1">
+<!-- <meta name="viewport" content="width-device-width, initial-scale=1"> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
@@ -13,6 +13,8 @@
 <!-- js import -->
 <script src="./resources/js/main.js" charset="UTF-8"></script>
 <script src="./resources/js/mainFuc.js" charset="UTF-8"></script>
+<!-- <script src="./resources/compnent/jquery-3.3.1.min.js?"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <title>공지사항 관리</title>
 </head>
 <body>
@@ -42,18 +44,18 @@
 	
 	<!-- 공지사항 모달  -->
 	<div id="id02" class="modal">
-		<form class="modal-content animate">
+		<form class="modal-content animate noticeAnimate">
 			<div class="imgcontainer">
 				<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span> 
 			</div>
 
 			<div class="container">
 				<!-- <label for="boardTitle"><b>제목</b></label>  -->
-				<input type="text"  name="boardTitle" class="boardTitle"required placeholder="제목을 입력해주세요."> 
+				<input type="text" id="boardTitle" name="boardTitle" class="boardTitle"required placeholder="제목을 입력해주세요."> 
 				<!-- <label for="boardContent"><b>내용</b></label> -->
-				<textarea rows="15" cols="57" placeholder="내용을 입력해주세요."></textarea> 
+				<textarea rows="15" cols="57" name="boardContent" id="boardContent" placeholder="내용을 입력해주세요."></textarea> 
 				<!-- <input type="text"	placeholder="비밀번호를 입력해주세요." class="userPw" name="userPw"required> -->
-				<button type="button">등록하기</button>
+				<button type="button" onclick="fnNoticeInsert()">등록하기</button>
 			</div>
 
 			<div class="container" style="background-color: #f1f1f1">
@@ -61,8 +63,5 @@
 			</div>
 		</form>
 	</div>
-	
-<script src="js/jquery-3.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
