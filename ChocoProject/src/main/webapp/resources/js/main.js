@@ -274,31 +274,59 @@ function fnNoticeInsert() {
 		},
 		error : function(request,status,error) 
 		{
-			alert("오류");
+			alert("code : " + request.status + "\r\nmessage : "
+					+ request.reponseText);
 		}				
 	})
 	
 
 }
 
-/*function fnmyPage() {
-	var sessionId = $("#sessionId").val();
-//	alert(sessionId);
+function fnNoticeUpdateForm(a) {
+	var num = a;
+	$("#noticeInsertBtn").css("display","none");
+	$("#noticeUpdateBtn").css("display","block");
+	
 	$.ajax({
-		url : "/myPage.do",
-		dataType : "json",
+		url : "/noticeUpdateForm.do",
+		dataType : "JSON",
 		type : "POST",
-		data : {
-			"userId" : sessionId,
-		}, 
+        data: {"boardNum" : a},
 		success : function(data, textStatus, jqXHR) 
 		{
-			alert("성공");
+			$("#boardTitle").val(data.boardTitle);
+			$("#boardContent").val(data.boardContent);
+			$("#boardNum").val(data.boardNum);
+			
 		},
-		error : function() 
+		error : function(request,status,error) 
 		{
 			alert("오류");
-		}			
+		}				
+	})
+}
+
+function fnNoticeUpdate() {
+	var formData = $(".noticeAnimate").serialize();
+
+	$.ajax({
+		url : "/noticeUpdate.do",
+		dataType : "JSON",
+		type : "POST",
+		data : formData,
+		success : function(data, textStatus, jqXHR) {
+			
+			if(data.result == "1")
+			{
+				alert("공지사항 수정이 완료되었습니다.");
+				location.href="/boardNotice.do";
+			}
+	
+		},
+		error : function(request, status, error) {
+			alert("code : " + request.status + "\r\nmessage : "
+					+ request.reponseText);
+		}
 	})
 	
-}*/
+}

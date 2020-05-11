@@ -31,4 +31,31 @@
 	INSERT INTO BOARD(BOARD_NUM,BOARD_TITLE,BOARD_CONTENT,BOARD_DATE,ADMIN_ID)
 	VALUES(#{boardNum},#{boardTitle},#{boardContent},SYSDATE,'admin')
 	</insert>
+	
+	<select id="noticeList" resultMap="BoardVO">
+	SELECT BOARD_NUM,BOARD_TITLE,BOARD_DATE
+	FROM BOARD
+	ORDER BY BOARD_NUM DESC
+	</select>
+	
+	<delete id="noticeDelete">
+	DELETE
+	FROM BOARD
+	WHERE BOARD_NUM = #{boardNum}
+	</delete>
+	
+	<update id="noticeUpdate">
+	UPDATE BOARD
+	SET BOARD_TITLE = #{boardTitle}
+	   ,BOARD_CONTENT = #{boardContent}
+	   ,BOARD_MODIFIED = SYSDATE
+	WHERE BOARD_NUM = #{boardNum}
+	    AND ADMIN_ID = #{adminId}
+	</update>
+	
+	<select id="noticeUpdateForm" resultMap="BoardVO">
+	SELECT *
+	FROM BOARD
+	WHERE BOARD_NUM = #{boardNum}
+	</select>
 </mapper>

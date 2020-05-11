@@ -77,3 +77,10 @@ $(document).ready(function() {
 	});	
 });
 
+$(document).ready(function() {
+	$("#insertBtn").click(function() {
+		$("#noticeUpdateBtn").css("display","none");
+		$("#noticeInsertBtn").css("display","block");
+	})
+})
+

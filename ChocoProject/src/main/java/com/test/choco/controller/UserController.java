@@ -1,5 +1,6 @@
 package com.test.choco.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.choco.HomeController;
+import com.test.choco.service.AdminService;
 import com.test.choco.service.UserService;
+import com.test.choco.vo.BoardVO;
 import com.test.choco.vo.UserVO;
 
 @Controller
@@ -25,11 +28,19 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	@Autowired
+	AdminService adminService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	/* 공지사항 페이지 이동 및 list 출력 */
 	@RequestMapping(value="/boardNotice.do", method = RequestMethod.GET)
-	public String boardNotice()
+	public String boardNotice(Model model) throws Exception
 	{
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		list = adminService.noticeList();
+		
+		model.addAttribute("list", list);
 		return "noticeBoard";		
 	}
 	

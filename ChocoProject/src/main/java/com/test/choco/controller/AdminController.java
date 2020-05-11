@@ -1,6 +1,7 @@
 package com.test.choco.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.choco.HomeController;
@@ -51,13 +53,6 @@ public class AdminController {
 		return result;	
 	}
 	
-	/* 공지사항에서 -> 공지사항 입력폼 */
-//	@RequestMapping(value="noticeList.do", method = RequestMethod.GET)
-//	public String noticeList()
-//	{
-//		return "noticeBoard";	
-//	}
-	
 	/* 공지사항 insert */
 	@RequestMapping(value="/noticeInsert.do", method = RequestMethod.POST)
 	@ResponseBody
@@ -65,6 +60,7 @@ public class AdminController {
 	{
 		HashMap<String, String> result = new  HashMap<String, String>();
 		int count = service.noticeInsert(bo);
+		
 		
 		if(count==1)
 		{
@@ -77,7 +73,51 @@ public class AdminController {
 			result.put("result","fail");
 		}
 		
-		return result;
-		
+		return result;		
 	}
+	
+	/* 공지사항 delete */
+	@RequestMapping(value="/noticeDelete.do", method = RequestMethod.GET)
+	public String noticeDelete(String boardNum) throws Exception
+	{
+		service.noticeDelete(boardNum);
+		return "redirect:boardNotice.do";	
+	}
+	
+	/* 공지사항 update 데이터 뿌리기 */
+	@RequestMapping(value="/noticeUpdateForm.do", method = RequestMethod.POST)
+	@ResponseBody 
+	public Map<String, Object> noticeUpdateForm(String boardNum) throws Exception
+	{		
+		Map<String, Object> map = new HashMap<String, Object>();
+		BoardVO bo = service.noticeUpdateForm(boardNum);
+		
+		map.put("boardTitle", bo.getBoardTitle());
+		map.put("boardContent",bo.getBoardContent());
+		map.put("boardNum",bo.getBoardNum());
+
+		return map;
+	}
+	
+	@RequestMapping(value="/noticeUpdate.do", method = {RequestMethod.POST, RequestMethod.GET})
+	@ResponseBody
+	public HashMap<String, String> noticeUpdate(BoardVO bo) throws Exception
+	{
+		HashMap<String, String> result = new HashMap<String, String>();
+		
+		int count = service.noticeUpdate(bo);
+		if(count == 1)
+		{
+			System.out.println("공지사항 update완료");
+			result.put("result", "1");
+		}
+		else
+		{
+			System.out.println("공지사항 update완료");
+			result.put("result", "0");
+		}
+		return result;
+	}
+	
+	
 }
