@@ -28,7 +28,7 @@
 		<input type="hidden" value="${userId }" id="sessionId" name="sessionId">
 		</c:if>
 		<c:if test="${sessionScope.adminId != null}">
-		<button type="button" class="tablink" onclick="">회원관리</button>
+		<button type="button" class="tablink" onclick="javascript:location.href='userList.do'">회원관리</button>
 		</c:if>
 	</div>
 

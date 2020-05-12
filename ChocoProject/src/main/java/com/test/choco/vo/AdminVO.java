@@ -5,6 +5,18 @@ public class AdminVO {
 	private String adminId;
 	private String adminPw;
 	private String createTime;
+	
+	// search input
+	private String searchInput;
+	
+	
+	
+	public String getSearchInput() {
+		return searchInput;
+	}
+	public void setSearchInput(String searchInput) {
+		this.searchInput = searchInput;
+	}
 	public String getAdminNum() {
 		return adminNum;
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.test.choco.vo.AdminVO;
 import com.test.choco.vo.BoardVO;
+import com.test.choco.vo.UserVO;
 
 public interface AdminService {
 	// admin로그인
@@ -23,4 +24,7 @@ public interface AdminService {
 		
 	// 공지사항 update
 	public int noticeUpdate(BoardVO bo) throws Exception;
+	
+	// 회원정보 List
+	public List<UserVO> userList() throws Exception;
 }

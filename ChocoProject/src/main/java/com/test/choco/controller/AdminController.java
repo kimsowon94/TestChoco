@@ -1,6 +1,8 @@
 package com.test.choco.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ import com.test.choco.HomeController;
 import com.test.choco.service.AdminService;
 import com.test.choco.vo.AdminVO;
 import com.test.choco.vo.BoardVO;
+import com.test.choco.vo.UserVO;
 
 @Controller
 public class AdminController {
@@ -99,6 +102,7 @@ public class AdminController {
 		return map;
 	}
 	
+	/* 공지사항 update */
 	@RequestMapping(value="/noticeUpdate.do", method = {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
 	public HashMap<String, String> noticeUpdate(BoardVO bo) throws Exception
@@ -119,5 +123,27 @@ public class AdminController {
 		return result;
 	}
 	
+	/* 회원관리 페이지 이동 */
+	@RequestMapping(value="/userList.do", method = RequestMethod.GET)
+	public String userList(Model model) throws Exception
+	{
+		List<UserVO> list = service.userList();
+	
+		model.addAttribute("list", list);
+		return "userList";		
+	}
+	
+	/* 회원정보 찾기 */
+	@RequestMapping(value="/searchUser.do", method = RequestMethod.POST)
+	public String searchUser(Model model, AdminVO ad, UserVO vo,@RequestParam("searchInput")String searchInput) throws Exception
+	{
+		List<UserVO> searchList = service.userList();
+		
+		model.addAttribute("searchList", searchList);
+		return "userListDiv";
+	}
+	
+	
+
 	
 }

@@ -10,6 +10,15 @@ public class UserVO {
 	private String userAddr2;
 	private String createTime;
 	private String modifiedTime;
+	
+	private String searchInput;
+	
+	public String getSearchInput() {
+		return searchInput;
+	}
+	public void setSearchInput(String searchInput) {
+		this.searchInput = searchInput;
+	}
 	public String getUserNum() {
 		return userNum;
 	}

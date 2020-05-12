@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.test.choco.dao.AdminDAO;
 import com.test.choco.vo.AdminVO;
 import com.test.choco.vo.BoardVO;
+import com.test.choco.vo.UserVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -44,5 +45,10 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public BoardVO noticeUpdateForm(String boardNum) throws Exception {
 		return sqlsession.selectOne("AdminDAO.noticeUpdateForm",boardNum);
+	}
+
+	@Override
+	public List<UserVO> userList() throws Exception {
+		return sqlsession.selectList("AdminDAO.userList");
 	}
 }

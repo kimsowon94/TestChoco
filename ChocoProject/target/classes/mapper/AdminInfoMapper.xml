@@ -17,6 +17,18 @@
 		<result column="BOARD_MODIFIED" property="boardModified"/>
 	</resultMap>
 	
+	<resultMap type="com.test.choco.vo.UserVO" id="UserVO">
+		<result column="USER_NUM" property="userNum"/>
+		<result column="USER_ID" property="userId"/>
+		<result column="USER_PW" property="userPw"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="USER_PHONE" property="userPhone"/>
+		<result column="USER_ADDR1" property="userAddr1"/>
+		<result column="USER_ADDR2" property="userAddr2"/>
+		<result column="CREATE_TIME" property="createTime"/>
+		<result column="MODIFIED_TIME" property="modifiedTime"/>		
+	</resultMap>
+	
 	<select id="adminLogin" resultType="INTEGER">
 		SELECT COUNT(*)
 		FROM ADMIN_INFO
@@ -58,4 +70,30 @@
 	FROM BOARD
 	WHERE BOARD_NUM = #{boardNum}
 	</select>
+	
+	<select id="userList" resultMap="UserVO">
+	SELECT USER_NUM
+	     , USER_ID
+	     , USER_NAME
+	     , USER_PHONE
+	     , TO_CHAR(TO_DATE(CREATE_TIME),'YYYY-MM-DD') AS "CREATE_TIME"
+	FROM USER_INFO
+	<when test="searchInput == 'userId'">
+	 	<where>		
+			AND USER_ID LIKE '%' || #{searchInput} || '%'		
+		</where>
+	</when>
+	ORDER BY USER_NUM DESC
+	</select>
+	<!-- 
+	<sql id="searchPerson">
+		<where>		
+			<if test="searchInput != null">
+			
+				AND USER_ID LIKE '%' || #{searchInput} || '%'		
+			
+			</if>
+		</where>
+	</sql>
+	 -->
 </mapper>

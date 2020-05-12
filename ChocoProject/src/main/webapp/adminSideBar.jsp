@@ -65,10 +65,8 @@ div.content {
 </head>
 <body>
 <div class="sidebar">
-  <a class="active" href="#home">내 정보수정</a>
-  <a href="#news">로그아웃</a>
-  <!-- <a href="#contact">Contact</a>
-  <a href="#about">About</a> -->
+  <a class="active" href="">회원리스트</a>
+  <a href="">블랙리스트</a>
 </div>
 
 <div class="content">

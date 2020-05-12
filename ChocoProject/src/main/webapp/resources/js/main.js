@@ -295,7 +295,7 @@ function fnNoticeUpdateForm(a) {
 		success : function(data, textStatus, jqXHR) 
 		{
 			$("#boardTitle").val(data.boardTitle);
-			$("#boardContent").val(data.boardContent);
+			$(".boardContent").val(data.boardContent);
 			$("#boardNum").val(data.boardNum);
 			
 		},
@@ -328,5 +328,22 @@ function fnNoticeUpdate() {
 					+ request.reponseText);
 		}
 	})
+}
+
+function searchBtn() {
+	var searchInput = $("#searchInput").val();
 	
+	$.ajax({
+		url : "/searchUser.do",
+		dataType : "html",
+		type : "POST",
+		data : {"searchInput" : searchInput},
+		success : function(data) {
+			$("#userList_div").html(data);
+		},
+		error : function(request, status, error) {
+			alert("code : " + request.status + "\r\nmessage : "
+					+ request.reponseText);
+		}
+	})
 }

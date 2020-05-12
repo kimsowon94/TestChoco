@@ -9,6 +9,7 @@ import com.test.choco.dao.AdminDAO;
 import com.test.choco.service.AdminService;
 import com.test.choco.vo.AdminVO;
 import com.test.choco.vo.BoardVO;
+import com.test.choco.vo.UserVO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -44,6 +45,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public BoardVO noticeUpdateForm(String boardNum) throws Exception {
 		return adminDao.noticeUpdateForm(boardNum);
+	}
+
+	@Override
+	public List<UserVO> userList() throws Exception {	
+		return adminDao.userList();
 	}
 	
 	
