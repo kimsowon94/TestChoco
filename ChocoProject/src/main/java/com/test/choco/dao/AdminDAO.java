@@ -7,6 +7,7 @@ import com.test.choco.vo.BoardVO;
 import com.test.choco.vo.UserVO;
 
 public interface AdminDAO {
+	
 	// admin로그인
 	public int adminLogin(AdminVO ad) throws Exception;
 	

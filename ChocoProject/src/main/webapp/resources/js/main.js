@@ -231,6 +231,8 @@ function fnLogin() {
 		})
 	}
 }
+
+//회원정보 업데이트
 function fnUserUpdate() {
 	var formData = $("#registerUpdate").serialize();
 	/*var userId = $(".userId").val();*/
@@ -269,8 +271,17 @@ function fnNoticeInsert() {
         data: formData,
 		success : function(data, textStatus, jqXHR) 
 		{
-			alert("공지사항이 등록되었습니다.");
-			location.href="/boardNotice.do";
+			if(data.result == "success")
+			{
+				alert("공지사항이 등록되었습니다.");
+				location.href="/boardNotice.do";
+			}
+			else
+			{
+				alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
+				location.reload();
+			}
+			
 		},
 		error : function(request,status,error) 
 		{
@@ -282,6 +293,7 @@ function fnNoticeInsert() {
 
 }
 
+// 공지사항 업데이트를 위해 데이터 뿌리기
 function fnNoticeUpdateForm(a) {
 	var num = a;
 	$("#noticeInsertBtn").css("display","none");
@@ -306,6 +318,7 @@ function fnNoticeUpdateForm(a) {
 	})
 }
 
+// 공지사항 업데이트
 function fnNoticeUpdate() {
 	var formData = $(".noticeAnimate").serialize();
 
@@ -330,6 +343,7 @@ function fnNoticeUpdate() {
 	})
 }
 
+//회원정보 검색창
 function searchBtn() {
 	var searchInput = $("#searchInput").val();
 	
@@ -347,3 +361,6 @@ function searchBtn() {
 		}
 	})
 }
+
+
+

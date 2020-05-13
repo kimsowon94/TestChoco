@@ -64,10 +64,17 @@
 			</div>
 
 			<div class="container">
+				<c:if test="${sessionScope.adminId != null}">	
 				<input type="text" id="boardTitle" name="boardTitle" class="boardTitle"required placeholder="제목을 입력해주세요."> 
-				<textarea rows="15" class="boardContent" cols="57" name="boardContent" id="summernote" placeholder="내용을 입력해주세요."></textarea> 				
+				<textarea rows="15" class="boardContent" cols="57" name="boardContent" id="summernote" placeholder="내용을 입력해주세요."></textarea> 
+							
 				<button type="button" id="noticeInsertBtn" style="display: none;" onclick="fnNoticeInsert()">등록하기</button>
 				<button type="button" id="noticeUpdateBtn" style="display: none;" onclick="fnNoticeUpdate()">수정하기</button>
+				</c:if>
+				<c:if test="${sessionScope.adminId == null}">	
+				<input type="text" id="boardTitle" name="boardTitle" class="boardTitle"required placeholder="제목을 입력해주세요." readonly="readonly"> 
+				<textarea rows="15" class="boardContent" cols="57" name="boardContent" id="summernote" placeholder="내용을 입력해주세요." readonly="readonly"></textarea> 
+				</c:if>
 			</div>
 
 			<div class="container" style="background-color: #f1f1f1">

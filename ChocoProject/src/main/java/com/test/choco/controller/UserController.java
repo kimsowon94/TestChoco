@@ -3,6 +3,7 @@ package com.test.choco.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -84,22 +85,13 @@ public class UserController {
 	/* 마이페이지 이동 */
 	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
 	public String myPage(Model model,@RequestParam("userId") String userId ) throws Exception
-	{
+	{ 
 		List<UserVO> userInfo = userService.userInfoList(userId);
 		
 		model.addAttribute("userInfo", userInfo);
+		
 		return "myPage";
-	}
-	/* 회원정보 수정란에 데이터뿌리기 */
-//	@RequestMapping(value="myPage.do", method = RequestMethod.POST)
-//	@ResponseBody
-//	public String userInfoList(@RequestParam("userId") String userId, Model model) throws Exception
-//	{
-//		List<UserVO> userInfo = userService.userInfoList(userId);
-//		
-//		model.addAttribute("userInfo", userInfo);
-//		return "myPage";
-//	}
+	}	
 	
 	/* 로그인 */
 	@RequestMapping(value="userLogin.do", method = RequestMethod.POST)

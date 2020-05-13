@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -62,9 +63,8 @@ public class AdminController {
 	public HashMap<String, String> noticeInsert(Model model, BoardVO bo) throws Exception
 	{
 		HashMap<String, String> result = new  HashMap<String, String>();
+		
 		int count = service.noticeInsert(bo);
-		
-		
 		if(count==1)
 		{
 			System.out.println("공지사항 insert완료");
@@ -143,6 +143,7 @@ public class AdminController {
 		return "userListDiv";
 	}
 	
+
 	
 
 	
