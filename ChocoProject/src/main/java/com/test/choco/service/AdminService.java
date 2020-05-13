@@ -26,5 +26,8 @@ public interface AdminService {
 	public int noticeUpdate(BoardVO bo) throws Exception;
 	
 	// 회원정보 List
-	public List<UserVO> userList() throws Exception;
+	public List<UserVO> userList(UserVO vo) throws Exception;
+
+	// 회원 search
+	public List<UserVO> searchUser(UserVO vo) throws Exception;
 }

@@ -61,7 +61,7 @@ form.example::after {
 <body>
 	<jsp:include page="home.jsp" />
 	<jsp:include page="adminSideBar.jsp"/>
-	<form class="example" action="/action_page.php" style="float:right; max-width: 200px; padding: 10px;">
+	<form class="example"  style="float:right; max-width: 200px; padding: 10px;">
 		<input type="text" placeholder="Search.." name="searchInput" id="searchInput">
 		<button type="button" onclick="searchBtn()">
 			<i class="fa fa-search"></i>

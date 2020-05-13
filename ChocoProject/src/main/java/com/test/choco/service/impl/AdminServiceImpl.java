@@ -48,8 +48,13 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<UserVO> userList() throws Exception {	
-		return adminDao.userList();
+	public List<UserVO> userList(UserVO vo) throws Exception {	
+		return adminDao.userList(vo);
+	}
+
+	@Override
+	public List<UserVO> searchUser(UserVO vo) throws Exception {
+		return adminDao.searchUser(vo);
 	}
 	
 	

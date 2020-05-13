@@ -78,22 +78,26 @@
 	     , USER_PHONE
 	     , TO_CHAR(TO_DATE(CREATE_TIME),'YYYY-MM-DD') AS "CREATE_TIME"
 	FROM USER_INFO
-	<when test="searchInput == 'userId'">
-	 	<where>		
-			AND USER_ID LIKE '%' || #{searchInput} || '%'		
-		</where>
-	</when>
+	<if test="searchInput != null">
+		WHERE USER_ID LIKE '%' || #{searchInput} || '%'	
+		   OR USER_NAME LIKE '%' || #{searchInput} || '%'
+		   OR USER_PHONE LIKE '%' || #{searchInput} || '%'						
+	</if> 
 	ORDER BY USER_NUM DESC
 	</select>
-	<!-- 
-	<sql id="searchPerson">
-		<where>		
-			<if test="searchInput != null">
-			
-				AND USER_ID LIKE '%' || #{searchInput} || '%'		
-			
-			</if>
-		</where>
-	</sql>
-	 -->
+
+<!-- 	<select id="searchUser" resultMap="UserVO">
+	SELECT USER_NUM
+	     , USER_ID
+	     , USER_NAME
+	     , USER_PHONE
+	     , TO_CHAR(TO_DATE(CREATE_TIME),'YYYY-MM-DD') AS "CREATE_TIME"
+	FROM USER_INFO
+	<if test="searchInput != null">
+	WHERE USER_ID LIKE '%' || #{searchInput} || '%'		
+ 	 <include refid="userInfoReadWhere"/>	
+ 	</if>
+	ORDER BY USER_NUM DESC
+	</select> -->
+
 </mapper>

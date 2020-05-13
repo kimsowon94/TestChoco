@@ -125,9 +125,9 @@ public class AdminController {
 	
 	/* 회원관리 페이지 이동 */
 	@RequestMapping(value="/userList.do", method = RequestMethod.GET)
-	public String userList(Model model) throws Exception
+	public String userList(Model model, UserVO vo) throws Exception
 	{
-		List<UserVO> list = service.userList();
+		List<UserVO> list = service.userList(vo);
 	
 		model.addAttribute("list", list);
 		return "userList";		
@@ -135,9 +135,9 @@ public class AdminController {
 	
 	/* 회원정보 찾기 */
 	@RequestMapping(value="/searchUser.do", method = RequestMethod.POST)
-	public String searchUser(Model model, AdminVO ad, UserVO vo,@RequestParam("searchInput")String searchInput) throws Exception
+	public String searchUser(Model model, UserVO vo) throws Exception
 	{
-		List<UserVO> searchList = service.userList();
+		List<UserVO> searchList = service.userList(vo);
 		
 		model.addAttribute("searchList", searchList);
 		return "userListDiv";
