@@ -31,4 +31,13 @@ public interface AdminDAO {
 	
 	// 회원 search
 	public List<UserVO> searchUser(UserVO vo) throws Exception;
+	
+	// 회원 블랙 List
+	public List<UserVO> userBlackList(UserVO vo)throws Exception;
+	
+	// 회원 블랙 처리
+	public int blackUser(String userNum)throws Exception;
+	
+	// 회원 블랙 해제
+	public int reUser(String userNum)throws Exception;
 }

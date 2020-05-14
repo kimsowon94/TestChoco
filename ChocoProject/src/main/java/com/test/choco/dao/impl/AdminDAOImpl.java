@@ -56,4 +56,19 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<UserVO> searchUser(UserVO vo) throws Exception {
 		return sqlsession.selectList("AdminDAO.searchUser",vo);
 	}
+
+	@Override
+	public List<UserVO> userBlackList(UserVO vo) throws Exception {
+		return sqlsession.selectList("AdminDAO.userBlackList", vo);
+	}
+
+	@Override
+	public int blackUser(String userNum) throws Exception {
+		return sqlsession.update("AdminDAO.blackUser", userNum);
+	}
+
+	@Override
+	public int reUser(String userNum) throws Exception {
+		return sqlsession.update("AdminDAO.reUser", userNum);
+	}
 }

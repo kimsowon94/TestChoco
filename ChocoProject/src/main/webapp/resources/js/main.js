@@ -363,4 +363,53 @@ function searchBtn() {
 }
 
 
+function fnBlackUser(a) {
+	var userNum = a;
+	
+	if(confirm("해당 회원을 블랙처리 하시겠습니까?"))
+	{
+		$.ajax({
+			url : "/blackUser.do",
+			dataType : "JSON",
+			type : "POST",
+			data : {"userNum" : userNum},
+			success : function(data) {
+				if(data.result == "1")
+				{
+					alert("블랙처리가 완료되었습니다.");
+					location.reload();
+				}
+			},
+			error : function(request, status, error) {
+				alert("code : " + request.status + "\r\nmessage : "
+						+ request.reponseText);
+			}
+		})
+	}
+}
+
+function fnReUser(a) {
+	var userNum = a;
+	if(confirm("해당 회원을 해제 하시겠습니까?"))
+	{
+		$.ajax({
+			url : "/reUser.do",
+			dataType : "JSON",
+			type : "POST",
+			data : {"userNum" : userNum},
+			success : function(data) {
+				if(data.result == "1")
+				{
+					alert("블랙처리가 해제되었습니다.");
+					location.reload();
+				}
+			},
+			error : function(request, status, error) {
+				alert("code : " + request.status + "\r\nmessage : "
+						+ request.reponseText);
+			}
+		})
+	}
+}
+
 

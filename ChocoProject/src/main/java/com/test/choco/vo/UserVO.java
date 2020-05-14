@@ -10,7 +10,16 @@ public class UserVO {
 	private String userAddr2;
 	private String createTime;
 	private String modifiedTime;
+	private String userStatus;
 	
+	
+	
+	public String getUserStatus() {
+		return userStatus;
+	}
+	public void setUserStatus(String userStatus) {
+		this.userStatus = userStatus;
+	}
 	private String searchInput;
 	
 	public String getSearchInput() {

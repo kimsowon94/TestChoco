@@ -26,7 +26,8 @@
 		<result column="USER_ADDR1" property="userAddr1"/>
 		<result column="USER_ADDR2" property="userAddr2"/>
 		<result column="CREATE_TIME" property="createTime"/>
-		<result column="MODIFIED_TIME" property="modifiedTime"/>		
+		<result column="MODIFIED_TIME" property="modifiedTime"/>	
+		<result column="USER_STATUS" property="userStatus"/>	
 	</resultMap>
 	
 	<select id="adminLogin" resultType="INTEGER">
@@ -78,12 +79,41 @@
 	     , USER_PHONE
 	     , TO_CHAR(TO_DATE(CREATE_TIME),'YYYY-MM-DD') AS "CREATE_TIME"
 	FROM USER_INFO
+	WHERE USER_STATUS = 'Y'
 	<if test="searchInput != null">
-		WHERE USER_ID LIKE '%' || #{searchInput} || '%'	
+		AND USER_ID LIKE '%' || #{searchInput} || '%'	
 		   OR USER_NAME LIKE '%' || #{searchInput} || '%'
 		   OR USER_PHONE LIKE '%' || #{searchInput} || '%'						
 	</if> 
 	ORDER BY USER_NUM DESC
 	</select>
+	
+	<select id="userBlackList" resultMap="UserVO">
+	SELECT USER_NUM
+	     , USER_ID
+	     , USER_NAME
+	     , USER_PHONE
+	     , TO_CHAR(TO_DATE(CREATE_TIME),'YYYY-MM-DD') AS "CREATE_TIME"
+	FROM USER_INFO
+	WHERE USER_STATUS = 'N'
+	<if test="searchInput != null">
+		AND USER_ID LIKE '%' || #{searchInput} || '%'	
+		   OR USER_NAME LIKE '%' || #{searchInput} || '%'
+		   OR USER_PHONE LIKE '%' || #{searchInput} || '%'						
+	</if> 
+	ORDER BY USER_NUM DESC
+	</select>
+	
+	<update id="blackUser">
+	UPDATE USER_INFO
+	SET USER_STATUS = 'N'
+	WHERE USER_NUM = #{userNum}
+	</update>
+	
+	<update id="reUser">
+	UPDATE USER_INFO
+	SET USER_STATUS = 'Y'
+	WHERE USER_NUM = #{userNum}
+	</update>
 
 </mapper>

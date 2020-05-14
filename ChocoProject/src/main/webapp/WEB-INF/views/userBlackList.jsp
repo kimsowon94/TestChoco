@@ -67,7 +67,7 @@ form.example::after {
 			<i class="fa fa-search"></i>
 		</button>
 	</form>
-	<div class="container" style="width: 84%; float: right;"  id="userList_div">
+	<div class="container" style="width: 84%; float: right;"  id="userBlackList_div">
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -87,7 +87,7 @@ form.example::after {
 						<td>${a.userName }</td>
 						<td>${a.userPhone }</td>
 						<td>${a.createTime }</td>
-						<td><input type="button" style="width: 40%;" value="블랙" onclick="fnBlackUser(${a.userNum})"></td>
+						<td><input type="button" style="width: 40%;" value="해제" onclick="fnReUser(${a.userNum})"></td>
 					</tr>
 				</c:forEach>				
 			</tbody>

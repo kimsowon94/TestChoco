@@ -143,6 +143,53 @@ public class AdminController {
 		return "userListDiv";
 	}
 	
+	/* 회원 블랙리스트 */
+	@RequestMapping(value="userBlackList.do", method = RequestMethod.GET)
+	public String userBlackList(Model model, UserVO vo) throws Exception
+	{
+		List<UserVO> userBlackList = service.userBlackList(vo);
+		
+		model.addAttribute("list", userBlackList);
+		return "userBlackList";
+	}
+	
+	/* 블랙 버튼 누를 시 */
+	@RequestMapping(value="/blackUser.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> blackUser(String userNum) throws Exception
+	{
+		HashMap<String, String> result = new HashMap<String, String>();
+
+		int count = service.blackUser(userNum);
+		if (count == 1) {
+			System.out.println("블랙처리 update완료");
+			result.put("result", "1");
+		} else {
+			System.out.println("블랙처리 update안함");
+			result.put("result", "0");
+		}
+		return result;
+	}
+	
+	/* 블랙 해제 */
+	@RequestMapping(value="/reUser.do", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> reUser(String userNum) throws Exception
+	{
+		HashMap<String, String> result = new HashMap<String, String>();
+
+		int count = service.reUser(userNum);
+		if (count == 1) {
+			System.out.println("블랙처리 해제완료");
+			result.put("result", "1");
+		} else {
+			System.out.println("블랙처리 해제안함");
+			result.put("result", "0");
+		}
+		return result;
+	}
+	
+	
 
 	
 

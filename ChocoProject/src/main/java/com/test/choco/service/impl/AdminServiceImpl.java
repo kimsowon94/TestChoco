@@ -56,6 +56,21 @@ public class AdminServiceImpl implements AdminService{
 	public List<UserVO> searchUser(UserVO vo) throws Exception {
 		return adminDao.searchUser(vo);
 	}
+
+	@Override
+	public List<UserVO> userBlackList(UserVO vo) throws Exception {
+		return adminDao.userBlackList(vo);
+	}
+
+	@Override
+	public int blackUser(String userNum) throws Exception {
+		return adminDao.blackUser(userNum);
+	}
+
+	@Override
+	public int reUser(String userNum) throws Exception {
+		return adminDao.reUser(userNum);
+	}
 	
 	
 

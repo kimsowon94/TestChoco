@@ -64,8 +64,8 @@ div.content {
 </head>
 <body>
 <div class="sidebar">
-  <a class="active" href="">회원리스트</a>
-  <a href="">블랙리스트</a>
+  <a class="active" href="javaScript:location.href='userList.do'">회원리스트</a>
+  <a href="javaScript:location.href='userBlackList.do'">블랙리스트</a>
 </div>
 
 <div class="content">
