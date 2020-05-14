@@ -84,11 +84,11 @@ public class UserController {
 	
 	/* 마이페이지 이동 */
 	@RequestMapping(value="myPage.do", method = RequestMethod.GET)
-	public String myPage(Model model,@RequestParam("userId") String userId ) throws Exception
+	public String myPage(Model model,@RequestParam("userId") String userId) throws Exception
 	{ 
 		List<UserVO> userInfo = userService.userInfoList(userId);
-		
 		model.addAttribute("userInfo", userInfo);
+	
 		
 		return "myPage";
 	}	
@@ -100,44 +100,58 @@ public class UserController {
 			, HttpSession session, UserVO vo, Model model) throws Exception
 	{
 		HashMap<String, String> result = new  HashMap<String, String>();
-		String userName = userService.userLogin(vo);
-		System.out.println("userName ======= : " + userName);
+		String userStatus = userService.checkStatus(vo); 
 		
-		
-		if(userName == ""  || userName == null)
+		if(userStatus.equals("Y"))
 		{
-			System.out.println("로그인 실패");
-			 result.put("result", "fail"); 
+			String userName = userService.userLogin(vo);
+			if(userName == ""  || userName == null)
+			{
+				System.out.println("로그인 실패");
+				result.put("result", "fail"); 
+			}else {
+				System.out.println("로그인 성공");
+				session.setAttribute("userId", userId);
+				model.addAttribute("userName", userName);
+				result.put("result",userName);
+			}
 		}
-		else
-		{
-			System.out.println("로그인 성공");
-			session.setAttribute("userId", userId);
-			model.addAttribute("userName", userName);
-			result.put("result",userName); 
+		else if(userStatus.equals("N")){
+			System.out.println("블랙회원");
+			result.put("result", "black");
 		}
-		
 		return result;
 	}
 	
 	/* 회원정보 update */
 	@RequestMapping(value="/userInfoUpdate.do", method = RequestMethod.POST)
 	@ResponseBody
-	public HashMap<String, String> userInfoUpdate(UserVO vo) throws Exception
+	public HashMap<String, String> userInfoUpdate(UserVO vo, HttpSession session) throws Exception
 	{
 		HashMap<String, String> result = new HashMap<String, String>();
-		int count = userService.userInfoUpdate(vo);
 		
-		if(count > 0)
+		
+		if(session.getAttribute("userId")!=null)
 		{
-			System.out.println("회원정보 수정 완료");
-			result.put("result", "success");
+			int count = userService.userInfoUpdate(vo);
+			if(count > 0)
+			{
+				System.out.println("회원정보 수정 완료");
+				result.put("result", "success");
+			}
+			else
+			{
+				System.out.println("회원정보 수정 실패");
+				result.put("result", "fail");
+			}
+			
 		}
 		else
 		{
-			System.out.println("회원정보 수정 실패");
-			result.put("result", "fail");
+			System.out.println("세션만료");
+			result.put("result", "sessionExpire");
 		}
+		
 		return result;		
 	}
 	

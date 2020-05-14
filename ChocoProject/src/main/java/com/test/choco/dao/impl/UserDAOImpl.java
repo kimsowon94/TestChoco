@@ -40,6 +40,11 @@ public class UserDAOImpl implements UserDAO {
 	public int userInfoUpdate(UserVO vo) throws Exception {
 		return sqlsession.update("UserDAO.userInfoUpdate", vo);
 	}
+
+	@Override
+	public String checkStatus(UserVO vo) throws Exception {
+		return sqlsession.selectOne("UserDAO.checkStatus", vo);
+	}
 	
 
 }

@@ -48,7 +48,7 @@
 	<select id="noticeList" resultMap="BoardVO">
 	SELECT BOARD_NUM,BOARD_TITLE,TO_CHAR(TO_DATE(BOARD_DATE),'YYYY-MM-DD')AS "BOARD_DATE"
 	FROM BOARD
-	ORDER BY BOARD_NUM DESC
+	ORDER BY BOARD_NUM DESC 
 	</select>
 	
 	<delete id="noticeDelete">
@@ -115,5 +115,10 @@
 	SET USER_STATUS = 'Y'
 	WHERE USER_NUM = #{userNum}
 	</update>
+	
+	<select id="noticeCnt" resultType="Integer">
+	  SELECT COUNT(*)
+	  FROM BOARD	
+    </select>
 
 </mapper>

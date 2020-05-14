@@ -35,5 +35,9 @@ public class UserServiceImpl implements UserService {
 	public int userInfoUpdate(UserVO vo) throws Exception {
 		return userDao.userInfoUpdate(vo);
 	}
+	@Override
+	public String checkStatus(UserVO vo) throws Exception {
+		return userDao.checkStatus(vo);
+	}
 
 }

@@ -10,7 +10,8 @@
 		<result column="USER_ADDR1" property="userAddr1"/>
 		<result column="USER_ADDR2" property="userAddr2"/>
 		<result column="CREATE_TIME" property="createTime"/>
-		<result column="MODIFIED_TIME" property="modifiedTime"/>		
+		<result column="MODIFIED_TIME" property="modifiedTime"/>	
+		<result column="USER_STATUS" property="userStatus"/>	
 	</resultMap>
 	
 	<!-- 회원 insert -->
@@ -76,4 +77,11 @@
 		,MODIFIED_TIME = SYSDATE
 	WHERE USER_ID = #{userId}
 	</update>
+	
+	<!-- 로그인 status확인하기 -->
+	<select id="checkStatus" resultType="String">
+	SELECT USER_STATUS
+	FROM USER_INFO
+	WHERE USER_ID = #{userId} 
+	</select>
 </mapper>

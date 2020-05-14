@@ -71,6 +71,11 @@ public class AdminServiceImpl implements AdminService{
 	public int reUser(String userNum) throws Exception {
 		return adminDao.reUser(userNum);
 	}
+
+	@Override
+	public int noticeCnt() throws Exception {
+		return adminDao.noticeCnt();
+	}
 	
 	
 

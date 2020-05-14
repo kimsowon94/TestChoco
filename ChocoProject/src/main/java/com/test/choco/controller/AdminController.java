@@ -22,6 +22,7 @@ import com.test.choco.HomeController;
 import com.test.choco.service.AdminService;
 import com.test.choco.vo.AdminVO;
 import com.test.choco.vo.BoardVO;
+import com.test.choco.vo.PageVO;
 import com.test.choco.vo.UserVO;
 
 @Controller
@@ -128,7 +129,8 @@ public class AdminController {
 	public String userList(Model model, UserVO vo) throws Exception
 	{
 		List<UserVO> list = service.userList(vo);
-	
+		
+		
 		model.addAttribute("list", list);
 		return "userList";		
 	}

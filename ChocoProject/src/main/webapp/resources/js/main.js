@@ -218,6 +218,8 @@ function fnLogin() {
 			{
 				if(data.result == "fail"){
 					alert("아이디 또는 비밀번호가 틀렸습니다.");
+				}else if(data.result == "black"){
+					alert("해당 아이디로 로그인 할 수 없습니다. 관리자에게 문의하세요.");
 				}
 				else  {
 					alert(data.result + "님 환영합니다.");
@@ -247,9 +249,17 @@ function fnUserUpdate() {
 	        data: formData,
 			success : function(data, textStatus, jqXHR) 
 			{
+				if(data.result == "sessionExpire")
+				{
+					alert("세션이 만료되었습니다. 다시로그인해주세요.");
+					location.href="home.do";
+				}
+				else
+				{
+					alert("회원정보 수정이 완료되었습니다.");
+					location.reload();
+				}
 				
-				alert("회원정보 수정이 완료되었습니다.");
-				location.href="/myPage.do";
 			},
 			error : function(request,status,error) 
 			{
@@ -411,5 +421,4 @@ function fnReUser(a) {
 		})
 	}
 }
-
 

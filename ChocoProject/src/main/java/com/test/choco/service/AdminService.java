@@ -39,4 +39,7 @@ public interface AdminService {
 	
 	// 회원 블랙 해제
 	public int reUser(String userNum)throws Exception;
+	
+	// 공지사항 총 갯수
+	public int noticeCnt()throws Exception;
 }

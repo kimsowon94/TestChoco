@@ -71,4 +71,9 @@ public class AdminDAOImpl implements AdminDAO {
 	public int reUser(String userNum) throws Exception {
 		return sqlsession.update("AdminDAO.reUser", userNum);
 	}
+
+	@Override
+	public int noticeCnt() throws Exception {
+		return sqlsession.selectOne("AdminDAO.noticeCnt");
+	}
 }

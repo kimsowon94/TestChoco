@@ -20,4 +20,7 @@ public interface UserService {
 
 	// 회원정보 update
 	public int userInfoUpdate(UserVO vo) throws Exception;
+	
+	// 회원 status 확인
+	public String checkStatus(UserVO vo)throws Exception;
 }

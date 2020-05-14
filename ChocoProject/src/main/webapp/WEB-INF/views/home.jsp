@@ -14,7 +14,9 @@
 <!-- main css 적용 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
 </head>
+
 <body>
+<input type="hidden" id="pageNo1"name="pageNo1" value="1"> 
 	<div id="topMenu">   
 		<button class="tablink" onclick="javascript:location.href='home.do'"id="defaultOpen">홈</button>
 		<button class="tablink" onclick="">문의게시판</button>
