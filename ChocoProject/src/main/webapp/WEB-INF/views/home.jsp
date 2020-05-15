@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>♥또웡♥</title>
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <!-- css적용 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/main.css?ver=1">
@@ -14,7 +14,6 @@
 <!-- main css 적용 -->
 <link rel="stylesheet" type="text/css" href="./resources/css/login.css">
 </head>
-
 <body>
 <input type="hidden" id="pageNo1"name="pageNo1" value="1"> 
 	<div id="topMenu">   

@@ -286,12 +286,16 @@ function fnNoticeInsert() {
 				alert("공지사항이 등록되었습니다.");
 				location.href="/boardNotice.do";
 			}
-			else
+			else if(data.result == "fail")
 			{
-				alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
+				alert("장애발생");
 				location.reload();
 			}
-			
+			else if(data.result == "sessionExpire")
+			{
+				alert("세션이 만료되었습니다. 다시 로그인해주세요.");
+				location.reload();
+			}
 		},
 		error : function(request,status,error) 
 		{
@@ -343,6 +347,13 @@ function fnNoticeUpdate() {
 			{
 				alert("공지사항 수정이 완료되었습니다.");
 				location.href="/boardNotice.do";
+			}else if(data.result == "0"){
+				alert("일시오류");
+				location.href="/boardNotice.do";
+			}else if(data.result == "sessionExpire")
+			{
+				alert("세션이 만료되었습니다. 다시 로그인하세요.");
+				location.href='home.do';
 			}
 	
 		},
@@ -389,6 +400,17 @@ function fnBlackUser(a) {
 					alert("블랙처리가 완료되었습니다.");
 					location.reload();
 				}
+				else if(data.result == "0")
+				{
+					alert("일시오류");
+					location.reload();
+				}
+				else if(data.result == "sessionExpire")
+				{
+					alert("세션이 만료되었습니다. 다시 로그인하세요.");
+					location.href='home.do';
+				}
+				
 			},
 			error : function(request, status, error) {
 				alert("code : " + request.status + "\r\nmessage : "
@@ -412,6 +434,15 @@ function fnReUser(a) {
 				{
 					alert("블랙처리가 해제되었습니다.");
 					location.reload();
+				}else if(data.result == "0")
+				{
+					alert("일시오류");
+					location.reload();
+				}
+				else if(data.result == "sessionExpire")
+				{
+					alert("세션이 만료되었습니다. 다시 로그인하세요.");
+					location.href='home.do';
 				}
 			},
 			error : function(request, status, error) {
